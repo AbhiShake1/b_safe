@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "964497007551",
+    "project_id": "bsaafe",
+    "storage_bucket": "bsaafe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964497007551:android:a8ee74125d83db7b63770a",
+        "android_client_info": {
+          "package_name": "com.proj.bsafe.b_safe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964497007551-io5220t0dkpmum7jipmugivr87gpfb3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGuq2g4D_DkJL_YMs7J_fXuYv1qL4Xw7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964497007551-io5220t0dkpmum7jipmugivr87gpfb3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
