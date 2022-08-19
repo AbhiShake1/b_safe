@@ -1,3 +1,4 @@
+import 'package:b_safe/app/packages/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -20,26 +21,24 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Obx(() => pages[controller.currentIndex.value]),
+        child: pages[controller.currentIndex.value].obx,
       ),
-      bottomNavigationBar: Obx(
-        () => NavigationBar(
-          selectedIndex: controller.currentIndex.value,
-          onDestinationSelected: (i) => controller.currentIndex.value = i,
-          destinations: const [
-            NavigationDestination(
-              selectedIcon: Icon(Icons.home),
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            NavigationDestination(
-              selectedIcon: Icon(Icons.account_circle),
-              icon: Icon(Icons.account_circle_outlined),
-              label: 'Profile',
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: controller.currentIndex.value,
+        onDestinationSelected: (i) => controller.currentIndex.value = i,
+        destinations: const [
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'Profile',
+          ),
+        ],
+      ).obx,
     );
   }
 }
