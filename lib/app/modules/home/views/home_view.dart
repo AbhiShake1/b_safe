@@ -5,48 +5,41 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  static const TextStyle _textStyle = TextStyle(
-    fontSize: 40,
-    fontWeight: FontWeight.w700,
-    letterSpacing: 2,
-  );
+  const HomeView({Key? key}) : super(key: key);
 
-  List<Widget> pages = [
-    Text('Home'),
-    Text('Profile Page Noice'),
-  ];
-
-  HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    List<Widget> pages = const [
+      Text('Home'),
+      Text('Profile Page Noice'),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: GetX<HomeController>(builder: (controller) {
-        return Center(
-          child: pages[Get.find<HomeController>().currentIndex.value],
-        );
-      }),
-      bottomNavigationBar: GetX<HomeController>(builder: (controller) {
-        return NavigationBar(
-          selectedIndex: Get.find<HomeController>().currentIndex.value,
-          onDestinationSelected: (int newIndex) {
-            Get.find<HomeController>().currentIndex.value = newIndex;
-          },
+      body: Center(
+        child: Obx(() => pages[controller.currentIndex.value]),
+      ),
+      bottomNavigationBar: Obx(
+        () => NavigationBar(
+          selectedIndex: controller.currentIndex.value,
+          onDestinationSelected: (i) => controller.currentIndex.value = i,
           destinations: const [
             NavigationDestination(
-                selectedIcon: Icon(Icons.home),
-                icon: Icon(Icons.home_outlined),
-                label: 'Home'),
+              selectedIcon: Icon(Icons.home),
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
+            ),
             NavigationDestination(
-                selectedIcon: Icon(Icons.account_circle),
-                icon: Icon(Icons.account_circle_outlined),
-                label: 'Profile'),
+              selectedIcon: Icon(Icons.account_circle),
+              icon: Icon(Icons.account_circle_outlined),
+              label: 'Profile',
+            ),
           ],
-        );
-      }),
+        ),
+      ),
     );
   }
 }
