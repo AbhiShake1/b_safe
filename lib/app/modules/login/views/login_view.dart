@@ -1,11 +1,9 @@
+import 'package:b_safe/app/modules/login/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
-import '../controllers/login_controller.dart';
-
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +11,7 @@ class LoginView extends GetView<LoginController> {
         title: const Text('LoginView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'LoginView is working',
           style: TextStyle(fontSize: 20),
