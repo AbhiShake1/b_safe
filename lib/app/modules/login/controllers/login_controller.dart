@@ -35,13 +35,22 @@ class LoginController extends GetxController {
     final result = await _auth.signInWithPhone(
       phoneNumberController.text,
       // ignore: avoid_redundant_argument_values
-      onCodeSent: (verificationId, __) {
-        _toStartVerification.listen((start) {
-          if (start) {
-            _auth.verifyOtpAndSignIn(verificationId, smsCodeController.text);
-          }
-        });
-      },
+      onCodeSent: (verificationId, __) =>
+          _toStartVerification.listen((start) async {
+        if (start) {
+          final res = await _auth.verifyOtpAndSignIn(
+            verificationId,
+            smsCodeController.text,
+          );
+          res.fold(
+            (l) => null,
+            (e) {
+              smsCodeController.clear();
+              Get.snackbar('Something went wrong', e.toString());
+            },
+          );
+        }
+      }),
     );
     result.fold(
       (l) => Get.to<dynamic>(const OtpView()),
