@@ -184,6 +184,6 @@ class LoginView extends GetView<LoginController> {
           ),
         ),
       ),
-      );
+    );
   }
 }

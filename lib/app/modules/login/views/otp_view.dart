@@ -16,12 +16,13 @@ class OtpView extends GetView {
         width: 40,
         decoration: BoxDecoration(
           border: Border.all(width: 0),
-          borderRadius: const BorderRadius.all(Radius.circular(8)),),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+        ),
         child: Center(
             child: Text(
-              text[position],
-              style: const TextStyle(color: Colors.black),
-            )),
+          text[position],
+          style: const TextStyle(color: Colors.black),
+        )),
       );
     } catch (e) {
       return Container(
@@ -52,7 +53,9 @@ class OtpView extends GetView {
               child: IconButton(
                   iconSize: 40,
                   alignment: Alignment.center,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.back(result: "Hello world");
+                  },
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                     color: Color.fromRGBO(93, 6, 138, 210),
@@ -112,8 +115,8 @@ class OtpView extends GetView {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: const RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(21)),),
+                          borderRadius: BorderRadius.all(Radius.circular(21)),
+                        ),
                         backgroundColor: const Color.fromRGBO(93, 6, 138, 160),
                       ),
 
@@ -132,7 +135,7 @@ class OtpView extends GetView {
                               padding: const EdgeInsets.all(8),
                               decoration: const BoxDecoration(
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                               child: const Icon(
                                 Icons.arrow_forward_ios,
