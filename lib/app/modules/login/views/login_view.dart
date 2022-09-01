@@ -120,10 +120,6 @@ class LoginView extends GetView<LoginController> {
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        // height: 45,
-                        // constraints: const BoxConstraints(
-                        //     maxWidth: 500
-                        // ),
                         margin: const EdgeInsets.symmetric(
                           horizontal: 22,
                           vertical: 10,
@@ -179,35 +175,6 @@ class LoginView extends GetView<LoginController> {
                             ),
                           ),
                         ),
-                        // RaisedButton(
-                        //   onPressed: () {},
-                        //   color: Colors.purpleAccent
-                        //   shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
-                        //   child: Container(
-                        //     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                        //     child: Row(
-                        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //       children: <Widget>[
-                        //         Text(
-                        //           'Next',
-                        //           style: TextStyle(color: Colors.white),
-                        //         ),
-                        //         Container(
-                        //           padding: const EdgeInsets.all(8),
-                        //           decoration: BoxDecoration(
-                        //             borderRadius: const BorderRadius.all(Radius.circular(20)),
-                        //             color: MyColors.primaryColorLight,
-                        //           ),
-                        //           child: Icon(
-                        //             Icons.arrow_forward_ios,
-                        //             color: Colors.white,
-                        //             size: 16,
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                       )
                     ],
                   ),
@@ -217,7 +184,6 @@ class LoginView extends GetView<LoginController> {
           ),
         ),
       ),
-      // ),
-    );
+      );
   }
 }
