@@ -4,5 +4,7 @@ abstract class AuthClient {
     void Function(String, int?)? onCodeSent,
   });
 
+  Future<void> verifyOtpAndSignIn(String verificationId, String code);
+
   Future<void> signOut();
 }

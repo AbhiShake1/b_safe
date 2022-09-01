@@ -128,8 +128,9 @@ class LoginView extends GetView<LoginController> {
                           horizontal: 22,
                           vertical: 10,
                         ),
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: controller.phoneNumberController,
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: '+91',
                           ),
@@ -143,7 +144,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         constraints: const BoxConstraints(maxWidth: 500),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: controller.signInWithPhone,
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
                               const Color.fromRGBO(93, 6, 138, 160),

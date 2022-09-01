@@ -1,6 +1,7 @@
 import 'package:b_safe/app/packages/exceptions/exceptions.dart';
 import 'package:b_safe/app/packages/interfaces/auth_client.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class FirebaseAuthClient implements AuthClient {
   FirebaseAuth get _auth => FirebaseAuth.instance;
@@ -19,6 +20,15 @@ class FirebaseAuthClient implements AuthClient {
         },
         codeAutoRetrievalTimeout: (verificationId) {},
       );
+
+  @override
+  Future<void> verifyOtpAndSignIn(String verificationId, String code) async {
+    final credential = PhoneAuthProvider.credential(
+      verificationId: verificationId,
+      smsCode: code,
+    );
+    await _auth.signInWithCredential(credential);
+  }
 
   @override
   Future<void> signOut() => _auth.signOut();
