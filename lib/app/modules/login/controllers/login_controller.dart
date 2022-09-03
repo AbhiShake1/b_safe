@@ -7,10 +7,14 @@ class LoginController extends GetxController implements GetxService {
   final _auth = Get.find<AuthRepo>();
 
   late final TextEditingController phoneNumberController;
+  final numberKey = GlobalKey<FormState>();
 
   final _toStartVerification = false.obs;
 
   final pinCode = ''.obs;
+
+  String? numberValidator(String? text) =>
+      text?.isPhoneNumber ?? false ? null : 'Invalid';
 
   @override
   void onInit() {
@@ -32,6 +36,7 @@ class LoginController extends GetxController implements GetxService {
   void startCodeVerification() => _toStartVerification.value = true;
 
   Future<void> signInWithPhone() async {
+    if (!numberKey.currentState!.validate()) return;
     final result = await _auth.signInWithPhone(
       phoneNumberController.text,
       // ignore: avoid_redundant_argument_values

@@ -124,7 +124,10 @@ class LoginView extends GetView<LoginController> {
                           horizontal: 22,
                           vertical: 10,
                         ),
-                        child: TextField(
+                        child: TextFormField(
+                          key: controller.numberKey,
+                          validator: controller.numberValidator,
+                          autovalidateMode: AutovalidateMode.always,
                           controller: controller.phoneNumberController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
