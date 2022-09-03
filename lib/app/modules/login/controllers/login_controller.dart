@@ -38,7 +38,7 @@ class LoginController extends GetxController implements GetxService {
   Future<void> signInWithPhone() async {
     if (!numberKey.currentState!.validate()) return;
     final result = await _auth.signInWithPhone(
-      phoneNumberController.text.replaceAll(RegExp('[)(]'), ''),
+      phoneNumberController.text.replaceAll(')', '').replaceAll('(', ''),
       // ignore: avoid_redundant_argument_values
       onCodeSent: (verificationId, __) =>
           _toStartVerification.listen((start) async {
