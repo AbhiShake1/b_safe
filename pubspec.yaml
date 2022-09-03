@@ -12,9 +12,10 @@ dependencies:
   firebase_auth: 3.6.4
   google_fonts: ^3.0.1
   numeric_keyboard: ^1.1.0
+  dartz: ^0.10.1
+  pin_code_fields: 7.4.0
   flutter: 
     sdk: flutter
-  dartz: ^0.10.1
 
 dev_dependencies: 
   flutter_lints: 2.0.1
@@ -23,7 +24,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
-  uses-material-design: true
-  assets:
+  assets: 
     - assets/
+  uses-material-design: true
 

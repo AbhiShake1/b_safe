@@ -6,14 +6,15 @@ import 'package:get/get.dart';
 class LoginController extends GetxController implements GetxService {
   final _auth = Get.find<AuthRepo>();
 
-  late final TextEditingController phoneNumberController, smsCodeController;
+  late final TextEditingController phoneNumberController;
 
   final _toStartVerification = false.obs;
+
+  final pinCode = ''.obs;
 
   @override
   void onInit() {
     phoneNumberController = TextEditingController();
-    smsCodeController = TextEditingController();
     super.onInit();
   }
 
@@ -25,7 +26,6 @@ class LoginController extends GetxController implements GetxService {
   @override
   void onClose() {
     phoneNumberController.dispose();
-    smsCodeController.dispose();
     super.onClose();
   }
 
@@ -40,12 +40,12 @@ class LoginController extends GetxController implements GetxService {
         if (start) {
           final res = await _auth.verifyOtpAndSignIn(
             verificationId,
-            smsCodeController.text,
+            pinCode.value,
           );
           res.fold(
             (l) => null,
             (e) {
-              smsCodeController.clear();
+              pinCode.value = '';
               Get.snackbar('Something went wrong', e.toString());
             },
           );

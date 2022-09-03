@@ -1,13 +1,12 @@
+import 'package:b_safe/app/modules/login/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 
-class OtpView extends GetView {
-  const OtpView({Key? key}) : super(key: key);
-
-  final String text = "";
+class OtpView extends GetView<LoginController> {
+  const OtpView({super.key});
 
   Widget otpNumberWidget(int position) {
     try {
@@ -19,18 +18,24 @@ class OtpView extends GetView {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: Center(
-            child: Text(
-          text[position],
-          style: const TextStyle(color: Colors.black),
-        )),
+          child: Obx(
+            () => Text(
+              controller.pinCode.value.length > position
+                  ? controller.pinCode.value[position]
+                  : '',
+              style: const TextStyle(color: Colors.black),
+            ),
+          ),
+        ),
       );
     } catch (e) {
       return Container(
         height: 40,
         width: 40,
         decoration: BoxDecoration(
-            border: Border.all(width: 0),
-            borderRadius: const BorderRadius.all(Radius.circular(8))),
+          border: Border.all(width: 0),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+        ),
       );
     }
   }
@@ -52,10 +57,7 @@ class OtpView extends GetView {
               ),
               child: IconButton(
                   iconSize: 40,
-                  alignment: Alignment.center,
-                  onPressed: () {
-                    Get.back(result: "Hello world");
-                  },
+                  onPressed: Get.back<dynamic>,
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                     color: Color.fromRGBO(93, 6, 138, 210),
@@ -69,33 +71,34 @@ class OtpView extends GetView {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'Enter 6 digits verification code sent to your number',
-                              style: GoogleFonts.poppins(
-                                  letterSpacing: 2,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 21.5,
-                                  textStyle: const TextStyle(
-                                    shadows: [
-                                      Shadow(
-                                        color: Color.fromRGBO(93, 6, 138, 150),
-                                        blurRadius: 20,
-                                        offset: Offset(10, 9),
-                                      ),
-                                      Shadow(
-                                        color: Color.fromRGBO(93, 6, 138, 150),
-                                        blurRadius: 20,
-                                        offset: Offset(-10, 9),
-                                      ),
-                                    ],
-                                  )),
-                            )),
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            'Enter 6 digits verification code sent to your number',
+                            style: GoogleFonts.poppins(
+                                letterSpacing: 2,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 21.5,
+                                textStyle: const TextStyle(
+                                  shadows: [
+                                    Shadow(
+                                      color: Color.fromRGBO(93, 6, 138, 150),
+                                      blurRadius: 20,
+                                      offset: Offset(10, 9),
+                                    ),
+                                    Shadow(
+                                      color: Color.fromRGBO(93, 6, 138, 150),
+                                      blurRadius: 20,
+                                      offset: Offset(-10, 9),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        ),
                         Container(
                           constraints: const BoxConstraints(maxWidth: 500),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
+                            children: [
                               otpNumberWidget(0),
                               otpNumberWidget(1),
                               otpNumberWidget(2),
@@ -120,10 +123,13 @@ class OtpView extends GetView {
                         backgroundColor: const Color.fromRGBO(93, 6, 138, 160),
                       ),
 
-                      onPressed: () {}, // check for otp here
+                      onPressed: controller
+                          .startCodeVerification, // check for otp here
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 8),
+                          vertical: 8,
+                          horizontal: 8,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -149,13 +155,19 @@ class OtpView extends GetView {
                     ),
                   ),
                   NumericKeyboard(
-                    onKeyboardTap: (String text) {},
+                    onKeyboardTap: (text) {
+                      if (controller.pinCode.value.length < 6) {
+                        controller.pinCode.value += text;
+                      }
+                    },
                     textColor: const Color.fromRGBO(93, 6, 138, 125),
                     rightIcon: const Icon(
                       Icons.backspace,
                       color: Color.fromRGBO(93, 6, 138, 182),
                     ),
-                    rightButtonFn: () {},
+                    rightButtonFn: () => controller.pinCode.value = controller
+                        .pinCode.value
+                        .substring(0, controller.pinCode.value.length - 1),
                   ),
                   const SizedBox(height: 20),
                 ],
