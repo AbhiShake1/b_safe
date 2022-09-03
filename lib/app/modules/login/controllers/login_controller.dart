@@ -3,7 +3,7 @@ import 'package:b_safe/app/modules/login/views/otp_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController {
+class LoginController extends GetxController implements GetxService {
   final _auth = Get.find<AuthRepo>();
 
   late final TextEditingController phoneNumberController, smsCodeController;

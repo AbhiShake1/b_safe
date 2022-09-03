@@ -1,7 +1,6 @@
 import 'package:b_safe/app/packages/exceptions/exceptions.dart';
 import 'package:b_safe/app/packages/interfaces/auth_client.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 
 class FirebaseAuthClient implements AuthClient {
   FirebaseAuth get _auth => FirebaseAuth.instance;
