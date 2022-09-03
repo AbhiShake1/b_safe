@@ -124,14 +124,16 @@ class LoginView extends GetView<LoginController> {
                           horizontal: 22,
                           vertical: 10,
                         ),
-                        child: TextFormField(
+                        child: Form(
                           key: controller.numberKey,
-                          validator: controller.numberValidator,
-                          autovalidateMode: AutovalidateMode.always,
-                          controller: controller.phoneNumberController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: '+91',
+                          child: TextFormField(
+                            validator: controller.numberValidator,
+                            autovalidateMode: AutovalidateMode.always,
+                            controller: controller.phoneNumberController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: '+91',
+                            ),
                           ),
                         ),
                       ),
