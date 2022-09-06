@@ -18,13 +18,11 @@ class OtpView extends GetView<LoginController> {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: Center(
-          child: Obx(
-            () => Text(
-              controller.pinCode.value.length > position
-                  ? controller.pinCode.value[position]
-                  : '',
-              style: const TextStyle(color: Colors.black),
-            ),
+          child: Text(
+            controller.pinCode.value.length > position
+                ? controller.pinCode.value[position]
+                : '',
+            style: const TextStyle(color: Colors.black),
           ),
         ),
       );

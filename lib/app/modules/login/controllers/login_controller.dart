@@ -48,7 +48,7 @@ class LoginController extends GetxController implements GetxService {
             pinCode.value,
           );
           res.fold(
-            (l) => Get.snackbar('Successful. now redirect', ''),
+            (l) {},
             (e) {
               pinCode.value = '';
               Get.snackbar('Something went wrong', e.toString());
