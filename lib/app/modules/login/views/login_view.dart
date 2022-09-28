@@ -11,11 +11,10 @@ class LoginView extends GetView<LoginController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(
-            height: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Column(
-              children: <Widget>[
-                const SizedBox(height: 50),
-                Expanded(
+              children: [
+                Flexible(
                   flex: 3,
                   child: Column(
                     children: <Widget>[
@@ -87,7 +86,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Expanded(
+                Flexible(
                   flex: 3,
                   child: Column(
                     children: <Widget>[
@@ -148,7 +147,7 @@ class LoginView extends GetView<LoginController> {
                           onPressed: controller.signInWithPhone,
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                              Color.fromRGBO(93, 6, 138, 160),
+                              const Color.fromRGBO(93, 6, 138, 160),
                             ),
                           ),
                           child: Container(
@@ -167,7 +166,8 @@ class LoginView extends GetView<LoginController> {
                                   padding: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Color.fromRGBO(93, 6, 138, 150),
+                                    color:
+                                        const Color.fromRGBO(93, 6, 138, 150),
                                   ),
                                   child: const Icon(
                                     Icons.arrow_forward_ios,
@@ -182,7 +182,7 @@ class LoginView extends GetView<LoginController> {
                       )
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
