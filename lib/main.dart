@@ -1,3 +1,4 @@
+import 'package:b_safe/app/config/theme.dart';
 import 'package:b_safe/app/routes/app_pages.dart';
 import 'package:b_safe/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,6 +30,8 @@ void main() async {
       title: 'BeSafe',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      theme: AppTheme.lightTheme,
+      themeMode: ThemeMode.light,
     ),
   );
 }
