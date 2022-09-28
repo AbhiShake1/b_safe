@@ -89,7 +89,7 @@ class LoginView extends GetView<LoginController> {
                 Flexible(
                   flex: 3,
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       Container(
                         constraints: const BoxConstraints(maxWidth: 500),
                         margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -118,20 +118,23 @@ class LoginView extends GetView<LoginController> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 22,
-                          vertical: 10,
-                        ),
-                        child: Form(
-                          key: controller.numberKey,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: TextFormField(
-                            validator: controller.numberValidator,
-                            controller: controller.phoneNumberController,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: '+91',
+                      Flexible(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 22,
+                            vertical: 10,
+                          ),
+                          child: Form(
+                            key: controller.numberKey,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            child: TextFormField(
+                              validator: controller.numberValidator,
+                              controller: controller.phoneNumberController,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: '+91',
+                              ),
                             ),
                           ),
                         ),
