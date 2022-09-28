@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:b_safe/app/modules/login/repo/auth_repo.dart';
 import 'package:b_safe/app/modules/login/views/otp_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,10 +38,12 @@ class LoginController extends GetxController implements GetxService {
 
   void startCodeVerification() => _toStartVerification.value = true;
 
+  static const _otpView = OtpView();
+
   Future<void> signInWithPhone() async {
     if (!numberKey.currentState!.validate()) return;
     final result = await _auth.signInWithPhone(
-      phoneNumberController.text.replaceAll(')', '').replaceAll('(', ''),
+      phoneNumberController.text.replaceAll(RegExp('[)(]'), ''),
       // ignore: avoid_redundant_argument_values
       onCodeSent: (verificationId, __) =>
           _toStartVerification.listen((start) async {
@@ -59,7 +63,7 @@ class LoginController extends GetxController implements GetxService {
       }),
     );
     result.fold(
-      (l) => Get.to<dynamic>(const OtpView()),
+      (l) => Get.to<dynamic>(_otpView),
       (e) => Get.snackbar('Something went wrong', e.toString()),
     );
   }

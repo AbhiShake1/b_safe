@@ -47,7 +47,7 @@ class OtpView extends GetView<LoginController> {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+          children: [
             Container(
               margin: const EdgeInsets.only(top: 20),
               padding: const EdgeInsets.all(10),
@@ -56,42 +56,44 @@ class OtpView extends GetView<LoginController> {
                 color: Color.fromRGBO(93, 6, 138, 210),
               ),
               child: IconButton(
-                  iconSize: 40,
-                  onPressed: Get.back<dynamic>,
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    color: Color.fromRGBO(93, 6, 138, 210),
-                  )),
+                iconSize: 40,
+                onPressed: Get.back<dynamic>,
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Color.fromRGBO(93, 6, 138, 210),
+                ),
+              ),
             ),
             Expanded(
               child: Column(
-                children: <Widget>[
-                  Expanded(
+                children: [
+                  Flexible(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
+                      children: [
                         Container(
                           margin: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
                             'Enter 6 digits verification code sent to your number',
                             style: GoogleFonts.poppins(
-                                letterSpacing: 2,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 21.5,
-                                textStyle: const TextStyle(
-                                  shadows: [
-                                    Shadow(
-                                      color: Color.fromRGBO(93, 6, 138, 150),
-                                      blurRadius: 20,
-                                      offset: Offset(10, 9),
-                                    ),
-                                    Shadow(
-                                      color: Color.fromRGBO(93, 6, 138, 150),
-                                      blurRadius: 20,
-                                      offset: Offset(-10, 9),
-                                    ),
-                                  ],
-                                )),
+                              letterSpacing: 2,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 21.5,
+                              textStyle: const TextStyle(
+                                shadows: [
+                                  Shadow(
+                                    color: Color.fromRGBO(93, 6, 138, 150),
+                                    blurRadius: 20,
+                                    offset: Offset(10, 9),
+                                  ),
+                                  Shadow(
+                                    color: Color.fromRGBO(93, 6, 138, 150),
+                                    blurRadius: 20,
+                                    offset: Offset(-10, 9),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                         Container(
@@ -113,7 +115,9 @@ class OtpView extends GetView<LoginController> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
                     constraints: const BoxConstraints(maxWidth: 500),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -132,7 +136,7 @@ class OtpView extends GetView<LoginController> {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
+                          children: [
                             const Text(
                               'Confirm',
                               style: TextStyle(color: Colors.white),

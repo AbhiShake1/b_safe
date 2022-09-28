@@ -7,13 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-void _loadPreviousState() {
-  FirebaseAuth.instance.authStateChanges().listen(
-        (user) => Get.offAllNamed<dynamic>(
-          user == null ? Routes.LOGIN : Routes.HOME,
-        ),
-      );
-}
+void _subscribeAuthChanges() => FirebaseAuth.instance.authStateChanges().listen(
+      (user) => Get.offAllNamed<dynamic>(
+        user == null ? Routes.LOGIN : Routes.HOME,
+      ),
+    );
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,11 +20,12 @@ void main() async {
   );
 
   SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent));
+    const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),
+  );
 
   runApp(
     GetMaterialApp(
-      onInit: _loadPreviousState,
+      onInit: _subscribeAuthChanges,
       title: 'BeSafe',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

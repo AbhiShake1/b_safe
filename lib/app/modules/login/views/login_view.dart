@@ -17,7 +17,7 @@ class LoginView extends GetView<LoginController> {
                 Flexible(
                   flex: 3,
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       const SizedBox(height: 35),
                       Container(
                         margin: const EdgeInsets.symmetric(
@@ -28,7 +28,7 @@ class LoginView extends GetView<LoginController> {
                           alignment: Alignment.center,
                           textDirection: TextDirection.rtl,
                           clipBehavior: Clip.none,
-                          children: <Widget>[
+                          children: [
                             Center(
                               child: Container(
                                 height: 240,
@@ -153,34 +153,27 @@ class LoginView extends GetView<LoginController> {
                               const Color.fromRGBO(93, 6, 138, 160),
                             ),
                           ),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 8,
-                              horizontal: 8,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                const Text(
-                                  'Next',
-                                  style: TextStyle(color: Colors.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'Next',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: const Color.fromRGBO(93, 6, 138, 1),
                                 ),
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color:
-                                        const Color.fromRGBO(93, 6, 138, 150),
-                                  ),
-                                  child: const Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Colors.white,
-                                    size: 16,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                                child: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              )
+                            ],
+                          ).paddingAll(8),
                         ),
                       )
                     ],
