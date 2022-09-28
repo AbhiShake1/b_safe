@@ -11,7 +11,7 @@ class LoginView extends GetView<LoginController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.width,
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 50),
@@ -148,7 +148,7 @@ class LoginView extends GetView<LoginController> {
                           onPressed: controller.signInWithPhone,
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                              const Color.fromRGBO(93, 6, 138, 160),
+                              Color.fromRGBO(93, 6, 138, 160),
                             ),
                           ),
                           child: Container(
@@ -165,9 +165,8 @@ class LoginView extends GetView<LoginController> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.all(8),
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
                                     color: Color.fromRGBO(93, 6, 138, 150),
                                   ),
                                   child: const Icon(

@@ -18,13 +18,13 @@ class OtpView extends GetView<LoginController> {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: Center(
-          child: Obx(() =>
-              Text(
-                controller.pinCode.value.length > position
-                    ? controller.pinCode.value[position]
-                    : '',
-                style: const TextStyle(color: Colors.black),
-              ),
+          child: Obx(
+            () => Text(
+              controller.pinCode.value.length > position
+                  ? controller.pinCode.value[position]
+                  : '',
+              style: const TextStyle(color: Colors.black),
+            ),
           ),
         ),
       );
@@ -117,8 +117,8 @@ class OtpView extends GetView<LoginController> {
                     constraints: const BoxConstraints(maxWidth: 500),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(21)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(21),
                         ),
                         backgroundColor: const Color.fromRGBO(93, 6, 138, 160),
                       ),
