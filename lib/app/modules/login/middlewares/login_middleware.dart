@@ -7,9 +7,7 @@ class LoginMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     if (FirebaseAuth.instance.currentUser != null) {
-      return const RouteSettings(
-        name: Routes.HOME,
-      );
+      return const RouteSettings(name: Routes.HOME);
     }
     return null;
   }
