@@ -1,5 +1,7 @@
 import 'package:b_safe/app/modules/home/controllers/home_controller.dart';
+import 'package:b_safe/app/modules/home/views/google_maps.dart';
 import 'package:b_safe/app/packages/extensions/extensions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,11 +11,18 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     const pages = <Widget>[
-      Text('Home'),
+      AppMapsView(),
       Text('Profile Page Noice'),
     ];
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton.large(
+        onPressed: () {},
+        elevation: 5,
+        backgroundColor: Colors.red,
+        child: const Icon(Icons.emergency_outlined),
+      ),
       appBar: AppBar(
         title: const Text('HomeView'),
         centerTitle: true,
