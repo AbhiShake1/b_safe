@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:b_safe/app/utils/permission.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -25,7 +27,8 @@ class AppMapsView extends StatelessWidget {
               child: const AppGoogleMaps(),
             ),
           ),
-        ),
+        ).paddingAll(20),
+        ...List.generate(30, (index) => const Text('data')),
       ],
     );
   }
@@ -46,6 +49,7 @@ class AppGoogleMaps extends StatelessWidget {
         final _controller = Completer<GoogleMapController>();
 
         return GoogleMap(
+          gestureRecognizers: const {Factory(EagerGestureRecognizer.new)},
           initialCameraPosition: const CameraPosition(
             target: LatLng(2, 3),
           ),
